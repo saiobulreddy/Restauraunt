@@ -8,7 +8,7 @@ public class RestaurantService {
     public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
 
         for (Restaurant restaurant : getRestaurants())
-            if (restaurant.getName().equals(restaurantName)) return restaurant;
+            if (restaurant.name.equals(restaurantName)) return restaurant;
 
         throw new restaurantNotFoundException(restaurantName);
     }
@@ -19,11 +19,10 @@ public class RestaurantService {
         return newRestaurant;
     }
 
-    public Restaurant removeRestaurant(String restaurantName) throws restaurantNotFoundException {
+    public void removeRestaurant(String restaurantName) throws restaurantNotFoundException {
         Restaurant restaurantToBeRemoved = findRestaurantByName(restaurantName);
         if (restaurantToBeRemoved == null) throw new restaurantNotFoundException(restaurantName);
         restaurants.remove(restaurantToBeRemoved);
-        return restaurantToBeRemoved;
     }
 
     public List<Restaurant> getRestaurants() {
